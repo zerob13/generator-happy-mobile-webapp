@@ -38,11 +38,11 @@ module.exports = yeoman.generators.Base.extend({
       choices: [{
         name: 'Bootstrap',
         value: 'includeBootstrap',
-        checked: true
+        checked: false
       },{
         name: 'Sass',
         value: 'includeSass',
-        checked: false
+        checked: true
       },{
         name: 'Modernizr',
         value: 'includeModernizr',
@@ -173,7 +173,6 @@ module.exports = yeoman.generators.Base.extend({
     this.mkdir('app/styles');
     this.mkdir('app/images');
     this.write('app/index.html', this.indexFile);
-
     this.write('app/scripts/main.js', 'console.log(\'\\\'Allo \\\'Allo!\');');
   },
 
