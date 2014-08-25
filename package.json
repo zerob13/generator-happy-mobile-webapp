@@ -1,0 +1,25 @@
+{
+  "name": "generator-happy-mobile-webapp",
+  "version": "0.0.1",
+  "description": "Yeoman generator that scaffolds out a front-end mobile webapp.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zerob13/generator-happy-mobile-webapp.git"
+  },
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "zerob13",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zerob13/generator-happy-mobile-webapp/issues"
+  },
+  "dependencies": {
+    "yeoman-generator": "^0.16.0"
+  },
+  "homepage": "https://github.com/zerob13/generator-happy-mobile-webapp"
+}
