@@ -182,8 +182,7 @@ module.exports = yeoman.generators.Base.extend({
       this.invoke(this.options['test-framework'], {
         options: {
           'skip-message': this.options['skip-install-message'],
-          'skip-install': this.options['skip-install'],
-          'coffee': this.options.coffee
+          'skip-install': this.options['skip-install']
         }
       });
 
