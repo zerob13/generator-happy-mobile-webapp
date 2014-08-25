@@ -1,25 +1,43 @@
 {
-  "name": "generator-happy-mobile-webapp",
-  "version": "0.0.1",
-  "description": "Yeoman generator that scaffolds out a front-end mobile webapp.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/zerob13/generator-happy-mobile-webapp.git"
-  },
-  "keywords": [
-    "yeoman-generator"
-  ],
-  "author": "zerob13",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/zerob13/generator-happy-mobile-webapp/issues"
-  },
-  "dependencies": {
-    "yeoman-generator": "^0.16.0"
-  },
-  "homepage": "https://github.com/zerob13/generator-happy-mobile-webapp"
+    "name": "generator-happy-mobile-webapp",
+    "version": "0.0.1",
+    "description": "Yeoman generator that scaffolds out a front-end mobile webapp.",
+    "main": "app/index.js",
+    "scripts": {
+        "test": "mocha --reporter spec"
+    },
+    "engines": {
+        "node": ">=0.10.0",
+        "npm": ">=1.2.10"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zerob13/generator-happy-mobile-webapp.git"
+    },
+    "keywords": [
+        "yeoman-generator"
+        ],
+    "files": [
+        "app"
+        ],
+    "author": "zerob13",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/zerob13/generator-happy-mobile-webapp/issues"
+    },
+    "dependencies": {
+        "chalk": "^0.5.1",
+        "cheerio": "^0.17.0",
+        "yosay": "^0.3.0",
+        "yeoman-generator": "^0.17.2"
+    },
+    "devDependencies": {
+        "mocha": "*",
+        "underscore": "^1.6.0"
+    },
+    "peerDependencies": {
+        "yo": ">=1.2.0",
+        "generator-mocha": ">=0.1.0"
+    },
+    "homepage": "https://github.com/zerob13/generator-happy-mobile-webapp"
 }
