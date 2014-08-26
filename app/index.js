@@ -93,7 +93,7 @@ module.exports = yeoman.generators.Base.extend({
       var bs = 'bootstrap' + (this.includeSass ? '-sass-official' : '');
       bower.dependencies[bs] = "~3.2.0";
     } else {
-      bower.dependencies.zeptojs= "https://github.com/madrobby/zepto/archive/master.zip";
+      bower.dependencies.zepto= "~1.1.4";
     }
 
     if (this.includeModernizr) {
