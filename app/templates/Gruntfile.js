@@ -41,10 +41,6 @@ module.exports = function (grunt) {
           livereload: true
         }
       },
-      jstest: {
-        files: ['test/spec/{,*/}*.js'],
-        tasks: ['test:watch']
-      },
       gruntfile: {
         files: ['Gruntfile.js']
       },<% if (includeSass) { %>
@@ -88,20 +84,6 @@ module.exports = function (grunt) {
           }
         }
       },
-      test: {
-        options: {
-          open: false,
-          port: 9001,
-          middleware: function(connect) {
-            return [
-              connect.static('.tmp'),
-              connect.static('test'),
-              connect().use('/bower_components', connect.static('./bower_components')),
-              connect.static(config.app)
-            ];
-          }
-        }
-      },
       dist: {
         options: {
           base: '<%%= config.dist %>',
@@ -134,29 +116,9 @@ module.exports = function (grunt) {
       all: [
         'Gruntfile.js',
         '<%%= config.app %>/scripts/{,*/}*.js',
-        '!<%%= config.app %>/scripts/vendor/*',
-        'test/spec/{,*/}*.js'
+        '!<%%= config.app %>/scripts/vendor/*'
       ]
-    },<% if (testFramework === 'mocha') { %>
-
-    // Mocha testing framework configuration options
-    mocha: {
-      all: {
-        options: {
-          run: true,
-          urls: ['http://<%%= connect.test.options.hostname %>:<%%= connect.test.options.port %>/index.html']
-        }
-      }
-    },<% } else if (testFramework === 'jasmine') { %>
-
-    // Jasmine testing framework configuration options
-    jasmine: {
-      all: {
-        options: {
-          specs: 'test/spec/{,*/}*.js'
-        }
-      }
-    },<% } %><% if (includeSass) { %>
+    },<% if (includeSass) { %>
 
     // Compiles Sass to CSS and generates necessary files if requested
     sass: {
@@ -363,7 +325,6 @@ module.exports = function (grunt) {
       }
     },<% if (includeModernizr) { %>
 
-    // Generates a custom Modernizr build that includes only the tests you
     // reference in your app
     modernizr: {
       dist: {
@@ -384,9 +345,6 @@ module.exports = function (grunt) {
     concurrent: {
       server: [<% if (includeSass) { %>
         'sass:server',
-        'copy:styles'
-      ],
-      test: [
         'copy:styles'
       ],
       dist: [<% } if (includeSass) { %>
@@ -422,22 +380,6 @@ module.exports = function (grunt) {
     grunt.task.run([target ? ('serve:' + target) : 'serve']);
   });
 
-  grunt.registerTask('test', function (target) {
-    if (target !== 'watch') {
-      grunt.task.run([
-        'clean:server',
-        'concurrent:test',
-        'autoprefixer'
-      ]);
-    }
-
-    grunt.task.run([
-      'connect:test',<% if (testFramework === 'mocha') { %>
-      'mocha'<% } else if (testFramework === 'jasmine') { %>
-      'jasmine'<% } %>
-    ]);
-  });
-
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
@@ -456,7 +398,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'newer:jshint',
-    'test',
     'build'
   ]);
 };

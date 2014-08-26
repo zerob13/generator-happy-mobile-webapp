@@ -7,21 +7,11 @@ var chalk = require('chalk');
 module.exports = yeoman.generators.Base.extend({
   constructor: function () {
     yeoman.generators.Base.apply(this, arguments);
-
-    // setup the test-framework property, Gruntfile template will need this
-    this.option('test-framework', {
-      desc: 'Test framework to be invoked',
-      type: String,
-      defaults: 'mocha'
-    });
-    this.testFramework = this.options['test-framework'];
-
     this.pkg = require('../package.json');
   },
 
   askFor: function () {
     var done = this.async();
-
     // welcome message
     if (!this.options['skip-welcome-message']) {
       this.log(require('yosay')());
@@ -178,12 +168,6 @@ module.exports = yeoman.generators.Base.extend({
 
   install: function () {
     this.on('end', function () {
-      this.invoke(this.options['test-framework'], {
-        options: {
-          'skip-message': this.options['skip-install-message'],
-          'skip-install': this.options['skip-install']
-        }
-      });
 
       if (!this.options['skip-install']) {
         this.installDependencies({

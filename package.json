@@ -1,17 +1,21 @@
 {
     "name": "generator-happy-mobile-webapp",
-    "version": "0.0.2",
-    "author": "zerob13",
+    "version": "0.0.3",
+    "description": "Scaffolds out a front-end mobile webapp",
     "license": "MIT",
-    "description": "Scaffolds out a front-end mobile webapp.",
+    "repository": "zerob13/generator-happy-mobile-webapp",
+    "author": "zerob13",
     "main": "app/index.js",
     "engines": {
         "node": ">=0.10.0",
         "npm": ">=1.2.10"
     },
     "scripts": {
-        "test": "mocha --reporter spec"
+        "test": ""
     },
+    "files": [
+        "app"
+        ],
     "keywords": [
         "yeoman-generator",
         "web",
@@ -22,9 +26,6 @@
         "zepto",
         "grunt"
         ],
-    "files": [
-        "app"
-        ],
     "dependencies": {
         "chalk": "^0.5.1",
         "cheerio": "^0.17.0",
@@ -32,11 +33,9 @@
         "yeoman-generator": "^0.17.2"
     },
     "devDependencies": {
-        "mocha": "*",
         "underscore": "^1.6.0"
     },
     "peerDependencies": {
-        "yo": ">=1.2.0",
-        "generator-mocha": ">=0.1.0"
+        "yo": ">=1.2.0"
     }
 }
