@@ -343,7 +343,7 @@ module.exports = function (grunt) {
     manifest: {
         generate: {
             options: {
-                basePath: "<%= config.dist %>",
+                basePath: "<%%= config.dist %>",
                 network: ["*"],
                 preferOnline: false,
                 timestamp: true
@@ -361,16 +361,17 @@ module.exports = function (grunt) {
             "!cache.manifest",
             "!robots.txt"
                 ],
-            dest: "<%= config.dist %>/cache.manifest"
-        },<% } %>
+            dest: "<%%= config.dist %>/cache.manifest"
+        }
+    },<% } %>
 
     // Run some tasks in parallel to speed up build process
     concurrent: {
       server: [<% if (includeSass) { %>
-        'sass:server',
+        'sass:server',<% } %>
         'copy:styles'
       ],
-      dist: [<% } if (includeSass) { %>
+      dist: [<% if (includeSass) { %>
         'sass',<% } %>
         'copy:styles',
         'imagemin',
@@ -416,7 +417,8 @@ module.exports = function (grunt) {
     'modernizr',<% } %>
     'rev',
     'usemin',
-    'htmlmin'
+    'htmlmin'<% if (includeCache) { %>,
+    'manifest:generate'<% } %>
   ]);
 
   grunt.registerTask('default', [
