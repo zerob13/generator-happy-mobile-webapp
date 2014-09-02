@@ -37,6 +37,10 @@ module.exports = yeoman.generators.Base.extend({
         name: 'Modernizr',
         value: 'includeModernizr',
         checked: false
+      },{
+        name: 'CacheManifest',
+        value: 'includeCache',
+        checked: false
       }]
     }, {
       when: function (answers) {
@@ -61,6 +65,7 @@ module.exports = yeoman.generators.Base.extend({
       this.includeSass = hasFeature('includeSass');
       this.includeBootstrap = hasFeature('includeBootstrap');
       this.includeModernizr = hasFeature('includeModernizr');
+      this.includeCache= hasFeature('includeCache');
 
       this.includeLibSass = answers.libsass;
       this.includeRubySass = !answers.libsass;

@@ -339,7 +339,30 @@ module.exports = function (grunt) {
         },
         uglify: true
       }
-    },<% } %>
+    },<% } %><% if (includeCache) { %>
+    manifest: {
+        generate: {
+            options: {
+                basePath: "<%= config.dist %>",
+                network: ["*"],
+                preferOnline: false,
+                timestamp: true
+            },
+            src: [
+                // Put HTML, CSS and JS first (not sure if it makes a difference)
+            "**/*.html",
+            "**/*.css",
+            "**/*.js",
+            // Then include everything else...
+            "**/*.*",
+            // .. but exclude these
+            "!apple-touch-*",
+            "!favicon.ico",
+            "!cache.manifest",
+            "!robots.txt"
+                ],
+            dest: "<%= config.dist %>/cache.manifest"
+        },<% } %>
 
     // Run some tasks in parallel to speed up build process
     concurrent: {
