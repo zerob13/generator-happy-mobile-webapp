@@ -71,7 +71,7 @@ module.exports = function (grunt) {
         open: true,
         livereload: 35729,
         // Change this to '0.0.0.0' to access the server from outside
-        hostname: 'localhost'
+        hostname: '0.0.0.0'
       },
       livereload: {
         options: {
@@ -123,7 +123,7 @@ module.exports = function (grunt) {
     // Compiles Sass to CSS and generates necessary files if requested
     sass: {
       options: {<% if (includeLibSass) { %>
-        sourceMap: true,
+        sourceMap: false,
         includePaths: ['bower_components']
         <% } else { %>
         sourcemap: true,
