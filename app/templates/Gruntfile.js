@@ -292,6 +292,9 @@ module.exports = function (grunt) {
           cwd: '<%%= config.app %>',
           dest: '<%%= config.dist %>',
           src: [
+            <% if (includeMustache) { %>
+            'template/*.mst',
+            <% } %>
             '*.{ico,png,txt}',
             'images/{,*/}*.webp',
             '{,*/}*.html',
