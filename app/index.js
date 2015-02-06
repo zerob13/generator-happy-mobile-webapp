@@ -103,7 +103,7 @@ module.exports = yeoman.generators.Base.extend({
             var bs = 'bootstrap' + (this.includeSass ? '-sass-official' : '');
             bower.dependencies[bs] = "~3.2.0";
         } else {
-            bower.dependencies.zepto = "~1.1.4";
+            bower.dependencies.zepto = "~1.1.6";
         }
 
         if (this.includeModernizr) {
