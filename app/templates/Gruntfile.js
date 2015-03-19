@@ -200,7 +200,11 @@ module.exports = function (grunt) {
       options: {
         dest: '<%%= config.dist %>'
       },
-      html: '<%%= config.app %>/index.html'
+      <% if (includeMustache) { %>
+      html: ['<%%= config.app %>/index.html','<%%= config.app %>/template/{,*/}*.mst']
+        <% } else { %>
+      html: '<%%= config.app %>/*.html'
+      <% } %>
     },
 
     // Performs rewrites based on rev and the useminPrepare configuration
@@ -208,7 +212,11 @@ module.exports = function (grunt) {
       options: {
         assetsDirs: ['<%%= config.dist %>', '<%%= config.dist %>/images']
       },
+      <% if (includeMustache) { %>
+      html: ['<%%= config.dist %>/{,*/}*.html','<%%= config.dist %>/template/{,*/}*.mst'],
+      <% } else { %>
       html: ['<%%= config.dist %>/{,*/}*.html'],
+      <% } %>
       css: ['<%%= config.dist %>/styles/{,*/}*.css']
     },
 
