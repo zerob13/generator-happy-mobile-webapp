@@ -173,7 +173,7 @@ module.exports = yeoman.generators.Base.extend({
     test:function(){
       this.directory('test');
       // this.write('test/test.js','console.log(\'done\');');
-      this.copy('test.js', 'test/test.js');
+      this.copy('test.js','test/test.js');
     },
 
     app: function() {
