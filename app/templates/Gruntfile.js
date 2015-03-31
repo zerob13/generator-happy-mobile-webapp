@@ -53,7 +53,7 @@ module.exports = function (grunt) {
         tasks: ['newer:copy:styles', 'autoprefixer']
       },
       casperjs:{
-        files: ['<%%= config.app %>/styles/{,*/}*.{html,mst,htm}','test/**/*.js'],
+        files: ['<%%= config.app %>/{,*/}*.{html,mst,htm}','test/**/*.js'],
         tasks:['casperjs']
       },
       livereload: {
