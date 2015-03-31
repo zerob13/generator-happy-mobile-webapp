@@ -170,6 +170,11 @@ module.exports = yeoman.generators.Base.extend({
             searchPath: ['app', '.tmp']
         });
     },
+    test:function(){
+      this.directory('test');
+      // this.write('test/test.js','console.log(\'done\');');
+      this.copy('test.js', 'test/test.js');
+    },
 
     app: function() {
         this.directory('app');

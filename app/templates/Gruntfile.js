@@ -52,6 +52,10 @@ module.exports = function (grunt) {
         files: ['<%%= config.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
       },
+      casperjs:{
+        files: ['<%%= config.app %>/styles/{,*/}*.{html,mst,htm}','test/**/*.js'],
+        tasks:['casperjs']
+      },
       livereload: {
         options: {
           livereload: '<%%= connect.options.livereload %>'
@@ -376,6 +380,14 @@ module.exports = function (grunt) {
         }
     },<% } %>
 
+    casperjs:{
+      options:{
+        async: {
+          parallel: false
+        }
+      },
+      files:['test/**/*.js']
+    },
     // Run some tasks in parallel to speed up build process
     concurrent: {
       server: [<% if (includeSass) { %>
