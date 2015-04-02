@@ -26,16 +26,38 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    
-    <div class="hero-unit">
-      <h1>我是一个小应用</h1>
-      <p>You now have</p>
-      <ul>
-      <li>HTML5 Boilerplate</li>
-      <% if (includeSass) { %><li>Sass</li><% } %>
-      <% if (includeModernizr) { %><li>Modernizr</li><% } %>
-      </ul>
+
+    <div class="header">我是title</div>
+    <div class="nav">
+      <div class="nav-tab">a</div>
+      <div class="nav-tab">b</div>
     </div>
+    <div class="container">
+      <div class="container-tab -active">
+        <div class="hero-unit">
+          <h1>我是a</h1>
+          <p>You now have</p>
+          <ul>
+            <li>HTML5 Boilerplate</li>
+            <% if (includeModernizr) { %><li>Modernizr</li><% } %>
+          </ul>
+        </div>
+      </div>
+      <div class="container-tab">
+       <div class="hero-unit">
+          <h1>我是b</h1>
+          <p>You now have</p>
+          <ul>
+            <% if (includeModernizr) { %><li>Modernizr</li><% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      我是footer
+    </div>
+    <div class="float-view"></div>
+
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->

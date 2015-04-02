@@ -16,7 +16,7 @@ module.exports = yeoman.generators.Base.extend({
     if (!this.options['skip-welcome-message']) {
       this.log(require('yosay')());
       this.log(chalk.magenta(
-        'Out of the box I include HTML5 Boilerplate, Zepto.js, and a ' +
+        'Out of the box I include HTML5 Boilerplate, Zepto.js,SASS and a ' +
         'Gruntfile.js to build your app.'
       ));
     }
@@ -29,10 +29,6 @@ module.exports = yeoman.generators.Base.extend({
         name: 'jQuery',
         value: 'includejQuery',
         checked: false
-      }, {
-        name: 'Sass',
-        value: 'includeSass',
-        checked: true
       }, {
         name: 'Modernizr',
         value: 'includeModernizr',
@@ -55,7 +51,6 @@ module.exports = yeoman.generators.Base.extend({
         return features && features.indexOf(feat) !== -1;
       }
 
-      this.includeSass = hasFeature('includeSass');
       this.includejQuery = hasFeature('includejQuery');
       this.includeModernizr = hasFeature('includeModernizr');
       this.includeCache = hasFeature('includeCache');
@@ -111,8 +106,10 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   mainStylesheet: function() {
-    var css = 'main.' + (this.includeSass ? 's' : '') + 'css';
+    var css = 'main.scss'; 
     this.template(css, 'app/styles/' + css);
+    this.copy('scss/_reset.scss','app/styles/_reset.scss');
+    this.copy('scss/mash.scss','app/styles/mash/mash.scss');
   },
 
   writeIndex: function() {
@@ -125,7 +122,7 @@ module.exports = yeoman.generators.Base.extend({
       html: this.indexFile,
       fileType: 'js',
       optimizedPath: 'scripts/main.js',
-      sourceFileList: ['scripts/main.js'],
+      sourceFileList: ['scripts/Mash.js','scripts/main.js'],
       searchPath: ['app', '.tmp']
     });
   },
@@ -144,7 +141,8 @@ module.exports = yeoman.generators.Base.extend({
       this.write('app/template/main.mst', '{{title}}');
     }
     this.write('app/index.html', this.indexFile);
-    this.write('app/scripts/main.js', '$(function(){console.log(\'done\');})');
+    this.copy('scripts/main.js', 'app/scripts/main.js');
+    this.copy('scripts/Mash.js', 'app/scripts/Mash.js');
   },
 
   install: function() {

@@ -43,11 +43,11 @@ module.exports = function (grunt) {
       },
       gruntfile: {
         files: ['Gruntfile.js']
-      },<% if (includeSass) { %>
+      },
       sass: {
         files: ['<%%= config.app %>/styles/{,*/}*.{scss,sass}'],
         tasks: ['sass:server', 'autoprefixer']
-      },<% } %>
+      },
       styles: {
         files: ['<%%= config.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -122,8 +122,7 @@ module.exports = function (grunt) {
         '<%%= config.app %>/scripts/{,*/}*.js',
         '!<%%= config.app %>/scripts/vendor/*'
       ]
-    },<% if (includeSass) { %>
-
+    },
     // Compiles Sass to CSS and generates necessary files if requested
     sass: {
       options: { 
@@ -148,7 +147,7 @@ module.exports = function (grunt) {
           ext: '.css'
         }]
       }
-    },<% } %>
+    },
 
     // Add vendor prefixed styles
     autoprefixer: {
@@ -170,11 +169,11 @@ module.exports = function (grunt) {
       app: {
         ignorePath: /^<%= config.app %>\/|\.\.\//,
         src: ['<%%= config.app %>/index.html']
-      }<% if (includeSass) { %>,
+      },
       sass: {
         src: ['<%%= config.app %>/styles/{,*/}*.{scss,sass}'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
-      }<% } %>
+      }
     },
 
     // Renames files for browser caching purposes
@@ -370,12 +369,12 @@ module.exports = function (grunt) {
     },
     // Run some tasks in parallel to speed up build process
     concurrent: {
-      server: [<% if (includeSass) { %>
-        'sass:server',<% } %>
+      server: [
+        'sass:server',
         'copy:styles'
       ],
-      dist: [<% if (includeSass) { %>
-        'sass',<% } %>
+      dist: [
+        'sass',
         'copy:styles',
         'imagemin',
         'svgmin'
