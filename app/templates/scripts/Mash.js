@@ -124,10 +124,10 @@ var Mash = (function() {
   }
 
   mash.uiInit = function() {
-    gotoTab(0);
+    mash.gotoTab(0);
     $('.nav-tab').on('click', function() {
       var index = $(this).index();
-      gotoTab(index);
+      mash.gotoTab(index);
     });
   }
 
