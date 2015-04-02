@@ -126,13 +126,10 @@ module.exports = function (grunt) {
 
     // Compiles Sass to CSS and generates necessary files if requested
     sass: {
-      options: {<% if (includeLibSass) { %>
-        sourceMap: false,
-        includePaths: ['bower_components']
-        <% } else { %>
+      options: { 
         sourcemap: false,
         loadPath: 'bower_components'
-      <% } %>},
+      },
       dist: {
         files: [{
           expand: true,
@@ -172,9 +169,7 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         ignorePath: /^<%= config.app %>\/|\.\.\//,
-        src: ['<%%= config.app %>/index.html']<% if (includeBootstrap) { %>,<% if (includeSass) { %>
-        exclude: ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js']<% } else { %>
-        exclude: ['bower_components/bootstrap/dist/js/bootstrap.js']<% } } %>
+        src: ['<%%= config.app %>/index.html']
       }<% if (includeSass) { %>,
       sass: {
         src: ['<%%= config.app %>/styles/{,*/}*.{scss,sass}'],
@@ -315,21 +310,7 @@ module.exports = function (grunt) {
         }, {
           src: 'node_modules/apache-server-configs/dist/.htaccess',
           dest: '<%%= config.dist %>/.htaccess'
-        }<% if (includeBootstrap) { %>, {
-          expand: true,
-          dot: true,
-          cwd: '<% if (includeSass) {
-              %>.<%
-            } else {
-              %>bower_components/bootstrap/dist<%
-            } %>',
-          src: '<% if (includeSass) {
-              %>bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*<%
-            } else {
-              %>fonts/*<%
-            } %>',
-          dest: '<%%= config.dist %>'
-        }<% } %>]
+        }]
       },
       styles: {
         expand: true,
@@ -339,7 +320,6 @@ module.exports = function (grunt) {
         src: '{,*/}*.css'
       }
     },<% if (includeModernizr) { %>
-
     // reference in your app
     modernizr: {
       dist: {
