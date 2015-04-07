@@ -371,7 +371,7 @@ module.exports = function (grunt) {
       browserify: {
         dist: {
           options: {
-            transform: [["babelify", { "stage": 0 }]]
+            transform: [['babelify', { 'stage': 2 }]]
           },
           files: [{
             expand: true,
