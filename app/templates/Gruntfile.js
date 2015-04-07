@@ -37,7 +37,7 @@ module.exports = function (grunt) {
       <% if(includeBabel) { %>
         browserify: {
           files: ['<%%= config.app %>/scripts/{,*/}*.es6'],
-          tasks: ['browserify']
+          tasks: ['browserify'],
           options: {
            livereload: true
           }
