@@ -34,6 +34,15 @@ module.exports = function (grunt) {
         files: ['bower.json'],
         tasks: ['wiredep']
       },
+      <% if(includeBabel) { %>
+        browserify: {
+          files: ['<%%= config.app %>/scripts/{,*/}*.es6'],
+          tasks: ['browserify']
+          options: {
+           livereload: true
+          }
+      },
+      <% } %>
       js: {
         files: ['<%%= config.app %>/scripts/{,*/}*.js'],
         tasks: ['jshint'],
@@ -358,7 +367,22 @@ module.exports = function (grunt) {
             dest: "<%%= config.dist %>/cache.manifest"
         }
     },<% } %>
-
+    <% if (includeBabel) {%>
+      browserify: {
+        dist: {
+          options: {
+            transform: [["babelify", { "stage": 0 }]]
+          },
+          files: [{
+            expand: true,
+            cwd: '<%%= config.app %>/scripts',
+            src: ['{,*/}*.es6'],
+            dest: '.tmp/scripts',
+            ext: '.js'
+          }]   
+        }
+      },
+  <% } %>
     casperjs:{
       options:{
         async: {
@@ -370,10 +394,14 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up build process
     concurrent: {
       server: [
+        <% if (includeBabel) { %>
+        'browserify:dist',<% } %>
         'sass:server',
         'copy:styles'
       ],
       dist: [
+        <% if (includeBabel) { %>
+        'browserify',<% } %>
         'sass',
         'copy:styles',
         'imagemin',

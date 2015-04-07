@@ -41,6 +41,10 @@ module.exports = yeoman.generators.Base.extend({
         name: 'CacheManifest',
         value: 'includeCache',
         checked: false
+      }, {
+        name: 'Babel(supportES6)',
+        value: 'includeBabel',
+        checked: true
       }]
     }];
 
@@ -55,6 +59,7 @@ module.exports = yeoman.generators.Base.extend({
       this.includeModernizr = hasFeature('includeModernizr');
       this.includeCache = hasFeature('includeCache');
       this.includeMustache = hasFeature('includeMustache');
+      this.includeBabel = hasFeature('includeBabel');
 
       done();
     }.bind(this));
@@ -106,10 +111,10 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   mainStylesheet: function() {
-    var css = 'main.scss'; 
+    var css = 'main.scss';
     this.template(css, 'app/styles/' + css);
-    this.copy('scss/_reset.scss','app/styles/_reset.scss');
-    this.copy('scss/mash.scss','app/styles/mash/mash.scss');
+    this.copy('scss/_reset.scss', 'app/styles/_reset.scss');
+    this.copy('scss/mash.scss', 'app/styles/mash/mash.scss');
   },
 
   writeIndex: function() {
@@ -122,7 +127,7 @@ module.exports = yeoman.generators.Base.extend({
       html: this.indexFile,
       fileType: 'js',
       optimizedPath: 'scripts/main.js',
-      sourceFileList: ['scripts/Mash.js','scripts/main.js'],
+      sourceFileList: ['scripts/Mash.js', 'scripts/main.js'],
       searchPath: ['app', '.tmp']
     });
   },
@@ -141,15 +146,19 @@ module.exports = yeoman.generators.Base.extend({
       this.write('app/template/main.mst', '{{title}}');
     }
     this.write('app/index.html', this.indexFile);
-    this.copy('scripts/main.js', 'app/scripts/main.js');
+    if (!this.includeBabel) {
+      this.copy('scripts/main.js', 'app/scripts/main.js');
+    } else {
+      this.copy('scripts/main.es6', 'app/scripts/main.es6');
+    }
     this.copy('scripts/Mash.js', 'app/scripts/Mash.js');
   },
 
   install: function() {
-      if (!this.options['skip-install']) {
-        this.installDependencies({
-          skipInstall: this.skipInstall
-        });
-      }
+    if (!this.options['skip-install']) {
+      this.installDependencies({
+        skipInstall: this.skipInstall
+      });
+    }
   }
 });
