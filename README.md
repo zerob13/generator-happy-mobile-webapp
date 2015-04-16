@@ -9,7 +9,7 @@ Yeoman generator that scaffolds out a front-end mobile web app
 
 
 [![NPM](https://nodei.co/npm/generator-happy-mobile-webapp.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/generator-happy-mobile-webapp)
-[![NPM](https://nodei.co/npm/generator-happy-mobile-webapp.png)](https://nodei.co/npm-dl/generator-happy-mobile-webapp/)
+[![NPM](https://nodei.co/npm-dl/generator-happy-mobile-webapp.png)](https://nodei.co/npm-dl/generator-happy-mobile-webapp/)
 
 ---
 
