@@ -7,6 +7,8 @@ Yeoman generator that scaffolds out a front-end mobile web app
 [![Node version](https://img.shields.io/node/v/generator-happy-mobile-webapp.svg?style=flat)](https://www.npmjs.com/package/generator-happy-mobile-webapp)
 [![License](https://img.shields.io/npm/l/generator-happy-mobile-webapp.svg?style=flat)](https://github.com/zerob13/generator-happy-mobile-webapp)
 [![NPM](https://nodei.co/npm/generator-happy-mobile-webapp.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/generator-happy-mobile-webapp)
+[![NPM](https://nodei.co/npm/generator-happy-mobile-webapp.png)](https://nodei.co/npm-dl/generator-happy-mobile-webapp/)
+
 ---
 
 ## Installation
