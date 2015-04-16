@@ -1,6 +1,6 @@
 {
     "name": "generator-happy-mobile-webapp",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "description": "Scaffolds out a front-end mobile webapp with utils, ES6 supported",
     "license": "MIT",
     "repository": "zerob13/generator-happy-mobile-webapp",
