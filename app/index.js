@@ -127,7 +127,7 @@ module.exports = yeoman.generators.Base.extend({
       html: this.indexFile,
       fileType: 'js',
       optimizedPath: 'scripts/main.js',
-      sourceFileList: ['scripts/Mash.js', 'scripts/main.js'],
+      sourceFileList: ['scripts/libs/Mash.js','scripts/libs/Module.js','scripts/libs/DataHub.js', 'scripts/main.js'],
       searchPath: ['app', '.tmp']
     });
   },
@@ -141,6 +141,7 @@ module.exports = yeoman.generators.Base.extend({
     this.mkdir('app/scripts');
     this.mkdir('app/styles');
     this.mkdir('app/images');
+    this.mkdir('app/scripts/libs');
     if (this.includeMustache) {
       this.mkdir('app/template');
       this.write('app/template/main.mst', '{{title}}');
@@ -151,7 +152,9 @@ module.exports = yeoman.generators.Base.extend({
     } else {
       this.copy('scripts/main.es6', 'app/scripts/main.es6');
     }
-    this.copy('scripts/Mash.js', 'app/scripts/Mash.js');
+    this.copy('scripts/libs/DataHub.js', 'app/scripts/libs/DataHub.js');
+    this.copy('scripts/libs/Mash.js', 'app/scripts/libs/Mash.js');
+    this.copy('scripts/libs/Module.js', 'app/scripts/libs/Module.js');
   },
 
   install: function() {

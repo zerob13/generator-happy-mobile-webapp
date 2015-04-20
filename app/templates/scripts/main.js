@@ -1,5 +1,20 @@
-(function() {
 
+(function() {
+  _M.Module.defMod('zmod-a',function(){
+    return {
+      click:function(e,el,root){
+        console.log(el+'is clicked');
+      }
+    }
+  });
+_M.Module.defMod('zmod-b',function(){
+    return {
+      click:function(e,el,root){
+        console.log(el+'is clicked mod-b');
+      }
+    }
+  });
+  _M.Module.init();
   function showFloat() {
     $('.float_view').addClass('show');
   }
