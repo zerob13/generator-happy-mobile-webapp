@@ -20,10 +20,7 @@ Mash.Module = (function() {
   function bindEventListener(mod, element) {
     for (var i = 0; i < eventTypes.length; i++) {
       if (mod[eventTypes[i]]) {
-        var callback = mod[eventTypes[i]];
-        $(element).on(eventTypes[i], function(event) {
-          callback(event, event.target, element);
-        });
+        $(element).on(eventTypes[i], mod[eventTypes[i]]);
       }
     }
   }

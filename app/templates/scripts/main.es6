@@ -11,14 +11,16 @@ bob.printFriends();
 (function() {
   _M.Module.defMod('zmod-a', function() {
     return {
-      click: function(e, el, root) {
+      click: function(e) {
+        var el=e.target;
         console.log(el + 'is clicked');
       }
     }
   });
   _M.Module.defMod('zmod-b', function() {
     return {
-      click: function(e, el, root) {
+      click: function(e) {
+        var el=e.target;
         console.log(el + 'is clicked mod-b');
       }
     }
