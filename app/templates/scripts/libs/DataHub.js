@@ -11,7 +11,7 @@ Mash.DataHub = (function() {
     //define a data provider
     defData: function(dataProviderName, factory) {
       if (typeof DataProviders[dataProviderName] !== 'undefined') {
-        error(new Error('DataProvider' + DataProvider + ' has already been defined.'));
+        throw (new Error('DataProvider' + DataProvider + ' has already been defined.'));
         return;
       }
       DataProviders[dataProviderName] = {

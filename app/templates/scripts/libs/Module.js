@@ -42,7 +42,7 @@ Mash.Module = (function() {
     },
     defMod: function(moduleName, factory) {
       if (typeof modules[moduleName] !== 'undefined') {
-        error(new Error('Module ' + moduleName + ' has already been added.'));
+        throw (new Error('Module ' + moduleName + ' has already been added.'));
         return;
       }
       modules[moduleName] = {
@@ -63,7 +63,7 @@ Mash.Module = (function() {
       var modName = $(element).data(MODULE_SELECTOR);
       var modData = modules[modName];
       if (!modData) {
-        error(new Error('Module type "' + modName + '" is not defined.'));
+        throw (new Error('Module type "' + modName + '" is not defined.'));
         return;
       }
       if (!isFired(element)) {
