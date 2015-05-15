@@ -44,7 +44,11 @@ module.exports = yeoman.generators.Base.extend({
       }, {
         name: 'Babel(supportES6)',
         value: 'includeBabel',
-        checked: true
+        checked: false
+      },{
+        name: 'CoffeeScript',
+        value:'includeCoffee',
+        checked:true
       }]
     }];
 
@@ -60,6 +64,7 @@ module.exports = yeoman.generators.Base.extend({
       this.includeCache = hasFeature('includeCache');
       this.includeMustache = hasFeature('includeMustache');
       this.includeBabel = hasFeature('includeBabel');
+      this.includeCoffee = hasFeature('includeCoffee');
 
       done();
     }.bind(this));
@@ -158,7 +163,7 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   install: function() {
-    if (!this.options['skip-install']) {
+    if (this.options['install']) {
       this.installDependencies({
         skipInstall: this.skipInstall
       });

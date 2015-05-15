@@ -33,14 +33,24 @@ module.exports = function (grunt) {
       bower: {
         files: ['bower.json'],
         tasks: ['wiredep']
-      },
-      <% if(includeBabel) { %>
+      },<% if(includeBabel) { %>
         browserify: {
           files: ['<%%= config.app %>/scripts/{,*/}*.es6'],
           tasks: ['browserify'],
           options: {
            livereload: true
           }
+      },<% } %><% if (includeCoffee) { %>
+      coffee: {
+        files: ['<%%= config.app %>/scripts/{,*/}*.{coffee,litcoffee,coffee.md}'],
+        tasks: ['coffee:dist'],
+          options: {
+           livereload: true
+          }
+      },
+      coffeeTest: {
+        files: ['test/spec/{,*/}*.{coffee,litcoffee,coffee.md}'],
+        tasks: ['coffee:test', 'test:watch']
       },
       <% } %>
       js: {
@@ -383,6 +393,29 @@ module.exports = function (grunt) {
         }
       },
   <% } %>
+  <% if (includeCoffee) {%>
+    // Compiles CoffeeScript to JavaScript
+    coffee: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%%= config.app %>/scripts',
+          src: '{,*/}*.{coffee,litcoffee,coffee.md}',
+          dest: '.tmp/scripts',
+          ext: '.js'
+        }]
+      },
+      test: {
+        files: [{
+          expand: true,
+          cwd: 'test/spec',
+          src: '{,*/}*.{coffee,litcoffee,coffee.md}',
+          dest: '.tmp/spec',
+          ext: '.js'
+        }]
+      }
+    },
+    <% } %>
     casperjs:{
       options:{
         async: {
@@ -395,13 +428,19 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         <% if (includeBabel) { %>
-        'browserify:dist',<% } %>
+        'browserify:dist',
+        <% } %>
+        <% if (includeCoffee) {  %>
+        'coffee:dist',
+        <% } %>
         'sass:server',
         'copy:styles'
       ],
       dist: [
         <% if (includeBabel) { %>
         'browserify',<% } %>
+        <% if (includeCoffee) { %>
+        'coffee',<% } %>
         'sass',
         'copy:styles',
         'imagemin',
