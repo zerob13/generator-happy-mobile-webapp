@@ -4,6 +4,7 @@ generator-happy-mobile-webapp
 
 [![NPM version](https://img.shields.io/npm/v/generator-happy-mobile-webapp.svg?style=flat)](https://www.npmjs.com/package/generator-happy-mobile-webapp)
 [![Node version](https://img.shields.io/node/v/generator-happy-mobile-webapp.svg?style=flat)](https://www.npmjs.com/package/generator-happy-mobile-webapp)
+[![NPM Downloads](https://img.shields.io/npm/dm/generator-happy-mobile-webapp.svg)](https://www.npmjs.com/package/generator-happy-mobile-webapp)
 
 
 [![NPM](https://nodei.co/npm/generator-happy-mobile-webapp.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/generator-happy-mobile-webapp)
