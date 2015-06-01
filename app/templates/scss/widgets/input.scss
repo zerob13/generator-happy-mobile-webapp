@@ -1,0 +1,137 @@
+$inputHeight: 50px;
+$padding-horizontal: 10px;
+$highlight-color: #16abf0;
+
+.gt-input-wrapper {
+  width: 100%;
+  position: relative;
+  height: $inputHeight;
+  line-height: $inputHeight;
+  white-space: nowrap;
+}
+
+.gt-input {
+  display: block;
+  border: 1px solid #2cadf1;
+  box-sizing: border-box;
+  font-size:20px;
+  &:focus {
+    outline: 0;
+  }
+}
+
+.gt-input-content {
+  &:first-child input {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+  &:last-child input {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+  &.float-me {
+    > .float-label {
+      transform: scale(0.5, 0.5) rotateY(0);
+    }
+    > .gt-input {
+      line-height: 3.4em;
+    }
+  }
+}
+
+.float-label {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: $padding-horizontal;
+  font-size: 18pt;
+  z-index: 1;
+  height: $inputHeight;
+  line-height: $inputHeight;
+  color: #999;
+  transform-origin: 0 0em;
+  transition: transform 160ms, color 200ms;
+  transform: scale(1, 1) rotateY(0);
+}
+
+.gt-search-form {
+  > .search-box {
+    width: 100%;
+    float: left;
+    outline: 0;
+    border-radius: 4px;
+    height: $inputHeight;
+    line-height: $inputHeight;
+    padding-right: 20%;
+    padding-left: 10px;
+  }
+  $close-icon-size: 18px;
+  > .close-icon {
+    &:after {
+      content: 'X';
+      color: #fff;
+      background: #a3a3a3;
+      display: block;
+      position: absolute;
+      top: ($inputHeight - $close-icon-size) / 2;
+      left: 68%;
+      border-radius: 50%;
+      width: $close-icon-size;
+      height: $close-icon-size;
+      line-height: $close-icon-size;
+      text-align: center;
+    }
+  }
+  > .search-btn {
+    display: block;
+    float: left;
+    width: 20%;
+    height: $inputHeight;
+    background-color: #2cadf1;
+    font-size: 14px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    text-align: center;
+    box-sizing: border-box;
+    color: #fff;
+    position: relative;
+    margin-left: -20%;
+  }
+  .search-box:not(:valid) ~ .close-icon {
+    display: none;
+  }
+}
+
+.gt-multiInput {
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    margin-left: 0;
+    height: $inputHeight;
+    line-height: $inputHeight;
+    padding-left: $padding-horizontal;
+    &:focus + label {
+      color: #16abf0;
+    }
+  }
+  .gt-input-qr {
+    display: block;
+    padding-right: 86px;
+    // float: left;
+ 
+  }
+  .gt-qcode {
+    display: block;
+    position: absolute;
+    background-color: #ddd;
+    font-size: 12px;
+    padding: 5px;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 4px;
+    width: 74px;
+    right: 5px;
+    bottom: ($inputHeight - 18px) / 2 - 5px;
+    z-index: 888;
+  }
+}

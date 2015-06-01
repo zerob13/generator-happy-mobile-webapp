@@ -44,11 +44,11 @@ module.exports = yeoman.generators.Base.extend({
       }, {
         name: 'Babel(supportES6)',
         value: 'includeBabel',
-        checked: false
+        checked: true
       },{
         name: 'CoffeeScript',
         value:'includeCoffee',
-        checked:true
+        checked: false
       }]
     }];
 
@@ -97,11 +97,11 @@ module.exports = yeoman.generators.Base.extend({
     }
 
     if (this.includeModernizr) {
-      bower.dependencies.modernizr = "~2.8.2";
+      bower.dependencies.modernizr = "~2.8.3";
     }
 
     if (this.includeMustache) {
-      bower.dependencies.mustache = "~1.0.0";
+      bower.dependencies.mustache = "~2.0.0";
     }
 
     this.write('bower.json', JSON.stringify(bower, null, 2));
@@ -117,9 +117,13 @@ module.exports = yeoman.generators.Base.extend({
 
   mainStylesheet: function() {
     var css = 'main.scss';
+    this.mkdir('app/styles/widgets');
     this.template(css, 'app/styles/' + css);
     this.copy('scss/_reset.scss', 'app/styles/_reset.scss');
-    this.copy('scss/mash.scss', 'app/styles/mash/mash.scss');
+    this.copy('scss/widgets/button.scss', 'app/styles/widgets/button.scss');
+    this.copy('scss/widgets/icons.scss', 'app/styles/widgets/icons.scss');
+    this.copy('scss/widgets/input.scss', 'app/styles/widgets/input.scss');
+    this.copy('scss/widgets/spinner.scss', 'app/styles/widgets/spinner.scss');
   },
 
   writeIndex: function() {
@@ -132,7 +136,7 @@ module.exports = yeoman.generators.Base.extend({
       html: this.indexFile,
       fileType: 'js',
       optimizedPath: 'scripts/main.js',
-      sourceFileList: ['scripts/libs/Mash.js','scripts/libs/Module.js','scripts/libs/DataHub.js', 'scripts/main.js'],
+      sourceFileList: [ 'scripts/main.js'],
       searchPath: ['app', '.tmp']
     });
   },
@@ -146,7 +150,6 @@ module.exports = yeoman.generators.Base.extend({
     this.mkdir('app/scripts');
     this.mkdir('app/styles');
     this.mkdir('app/images');
-    this.mkdir('app/scripts/libs');
     if (this.includeMustache) {
       this.mkdir('app/template');
       this.write('app/template/main.mst', '{{title}}');
@@ -157,9 +160,6 @@ module.exports = yeoman.generators.Base.extend({
     } else {
       this.copy('scripts/main.es6', 'app/scripts/main.es6');
     }
-    this.copy('scripts/libs/DataHub.js', 'app/scripts/libs/DataHub.js');
-    this.copy('scripts/libs/Mash.js', 'app/scripts/libs/Mash.js');
-    this.copy('scripts/libs/Module.js', 'app/scripts/libs/Module.js');
   },
 
   install: function() {

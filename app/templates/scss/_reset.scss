@@ -1,44 +1,120 @@
-
-body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,form,fieldset,legend,input,select,textarea,button,th,td,menu,article,pre,xmp,plaintext,listing{margin:0;padding:0;}
-pre,xmp,plaintext,listing{white-space:normal;}
-article,aside,dialog,figure,footer,header,hgroup,nav,section,select,time{display:block;}
-h1,h2,h3,h4,h5,h6,input,textarea,select,button,label{font-size:100%;font-weight:100;vertical-align:middle;}
-ul,dl,ol{list-style:none;}
-img,fieldset,input[type="submit"]{border:none;}
-input{outline:none;background:transparent;vertical-align:top;}  
-table{border-collapse:collapse;border-spacing:0;}       
-button{cursor:pointer;border:none;}
-textarea{word-wrap:break-word;resize:none;}
-
-select::-ms-expand{display:none;}
-
-
-input, textarea, select{-webkit-appearance:none;border:none;outline:none;}
-
-
-body{
-   -webkit-user-select:none;
-   -webkit-text-size-adjust:none;
-   -webkit-tap-highlight-color:rgba(0,0,0,0.05);
-    background:#f4f4f4;
-    color:#757575;}
-
-html,body{-webkit-text-size-adjust:none;min-height:100%; width:100%; }
-
-a,button,input{-webkit-touch-callout:none;outline:none; color:#757575;}
-a,a:visited{text-decoration:none;-webkit-touch-callout:none; color:#757575;}
-
-img[src='']{ display: none;}
-
-::-webkit-scrollbar {width: 0; height: 0;}
-
-
-.clearfix:before,
-.clearfix:after {
-    content: "";
-    display: table;
-}
-.clearfix:after {
-    clear: both;
+@mixin zero-margin-padding {
+  margin: 0;
+  padding: 0;
 }
 
+$white: #fff;
+$light-grey: #efefef;
+$silver: #ccc;
+$grey: #777;
+$black: #444;
+$default-text-color: #333;
+$dark-text-color: #999;
+$font-family: "Helvetica", "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3", "microsoft yahei";
+
+body, hgroup, h1, p, ul, li, div, input, select, textarea {
+  @include zero-margin-padding;
+  font-size: 14px;
+  color: $default-text-color;
+  position: relative;
+  font-family: $font-family;
+}
+
+a {
+  &:link, &:visited, &:hover, &:active {
+    color: $dark-text-color;
+    text-decoration: none;
+  }
+}
+
+ul, li {
+  list-style: none;
+}
+
+img {
+  border: none;
+}
+
+select, input {
+  -webkit-appearance: none;
+  @include zero-margin-padding;
+  box-shadow: none;
+  border: 0;
+  font-size: 15px;
+}
+
+::input-placeholder {
+  color: $dark-text-color;
+  font-size: 15px;
+  line-height: 15px;
+  font-family: $font-family;
+}
+
+input[type=text]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+input[type=text]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+[role="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+/* Reset `button` and button-style `input` default styles */
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+  background: none;
+  border: 0;
+  color: inherit;
+  /* cursor: default; */
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-appearance: button;
+  /* for input */
+  -webkit-user-select: none;
+  /* for button */
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* Make `a` like a button */
+[role="button"] {
+  color: inherit;
+  cursor: default;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  white-space: pre;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}

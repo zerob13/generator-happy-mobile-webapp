@@ -1,0 +1,54 @@
+$done-bgcolor: #51b33b;
+$done-empty-color: #fff;
+
+.gt-done {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: $done-bgcolor;
+  &:before {
+    content: '';
+    position: absolute;
+    right: 11px;
+    top: 13px;
+    width: 7px;
+    height: 2px;
+    background: $done-empty-color;
+    border-radius: 2px;
+    transform: rotate(40deg);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    width: 13px;
+    height: 2px;
+    background: $done-empty-color;
+    border-radius: 2px;
+    -webkit-transform: rotate(-50deg);
+    top: 10px;
+    right: 2px;
+  }
+  &.empty {
+    width: 26px;
+    height: 26px;
+    border: 3px solid $done-bgcolor;
+    background: none;
+    &:after {
+      width: 18px;
+      right: 1px;
+      top: 12px;
+      height: 3px;
+      background: $done-bgcolor;
+      border-radius: 3px;
+    }
+    &:before {
+      width: 10px;
+      height: 3px;
+      background: $done-bgcolor;
+      top: 16px;
+      right: 13px;
+      border-radius: 3px;
+    }
+  }
+}

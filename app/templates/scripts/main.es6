@@ -8,37 +8,21 @@ var bob = {
 }
 bob.printFriends();
 
-(function() {
-  _M.Module.defMod('zmod-a', function() {
-    return {
-      click: function(e) {
-        var el=e.target;
-        console.log(el + 'is clicked');
-      }
-    }
-  });
-  _M.Module.defMod('zmod-b', function() {
-    return {
-      click: function(e) {
-        var el=e.target;
-        console.log(el + 'is clicked mod-b');
-      }
-    }
-  });
-  _M.Module.init();
-
-  function showFloat() {
-    $('.float_view').addClass('show');
+$(document).ready(function() {
+  function updateText(event) {
+    var input = $(this);
+    // setTimeout(function() {
+    var val = input.val();
+    if (val != '')
+      input.parent().addClass('float-me');
+    else
+      input.parent().removeClass('float-me');
+    // }, 5);
   }
+  $('.gt-multiInput input').on('keyup input', updateText);
 
-  function gotoTab(index) {
-    $(".container-tab").removeClass('-active').eq(index).addClass('-active');
-  }
 
-  gotoTab(0);
-  $('.nav-tab').on('click', function() {
-    var index = $(this).index();
-    gotoTab(index);
+  $('.gt-search-form .close-icon').on('click', function() {
+    $('.search-box', $(this).parent()).val('');
   });
-  console.log('done');
-})();
+});

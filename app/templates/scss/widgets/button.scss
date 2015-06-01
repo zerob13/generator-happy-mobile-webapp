@@ -1,0 +1,23 @@
+.gt-btn {
+  -webkit-user-select: none;
+  width: 48px;
+  height: 30px;
+  font-size: 12px;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  border-radius: 3px;
+  background-color: #fff;
+  line-height: 30px;
+  box-sizing: border-box;
+}
+
+.gt-btn-blue {
+  border: 1px solid #2cadf1;
+  color: #2cadf1;
+}
+
+.gt-btn-gray {
+  border: 1px solid #aaa;
+  color: #aaa;
+}
